@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --dawn: #826189;
+    --dawn2: #A7A0E0;
+    --water: #126AA1;
+    --water2: #205B96;
+    --earth: #206E2D;
+    --earth2: #289620;
+    --sunset: #EB2B28;
+
+    --quicksand: 'Quicksand', sans-serif;
+    --inter: 'Inter', sans-serif;
+    --outfit: 'Outfit', sans-serif;
+
+    --current-primary: var(--dawn);
+    --current-secondary: var(--dawn2);
+
+    --class-color-dawn: #826189;
+    --club-color-dawn: #ff82b6;
+  
+    --class-color-water: #5082E0;
+    --club-color-water: #8ED1FC;
+  
+    --class-color-earth: #A0522D;
+    --club-color-earth: #228B22;
+  
+    --class-color-sunset: #FF7E5F;
+    --club-color-sunset: #FEB47B;
+}
+
+.class-item {
+    background-color: var(--current-class-color);
+}
+
+.club-item {
+    background-color: var(--current-club-color);
+}
+
+button, input, select, option, textarea {
+  font-family: inherit;
+}
+
+.tracker-page{
+  margin: 0;
+  font-family: var(--quicksand);
+
+  background-image: url("../../assets/Dawn.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: var(--current-secondary);
+  height: 100vh
+}
+
+.tracker-page{
+
+  /* Nav Bar */
+  header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    text-align: right;
+    height: 50px;
+    padding-bottom: 50px;
+    margin: 8px;
+  }
+
+  header h3 {
+    padding: 0 30px;
+    color: var(--current-primary);
+    z-index: 1000;
+  }
+
+  nav ul{
+    font-size: 16px;
+
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    gap:30px;
+    padding-left: 40px;
+  }
+
+  nav a{
+    color: var(--current-primary);
+    text-decoration: none;
+    font-weight: 600;
+
+    padding: 5px 10px;
+    border-radius: 12px;
+    transition: all 0.2s ease-out;
+  }
+
+  nav a:hover{
+    background-color: var(--current-secondary);
+    color: white;
+  }
+
+  #hamburger {
+      display: none;
+  }
+
+  @media (max-width: 630px) {
+      nav {
+          position: absolute;
+          flex-direction: column;
+          align-items: center;
+          top: 0px;
+          left: 0;
+          width: 100%;
+          height: 0;
+
+          text-align: center;
+          background: white;
+          transition: 0.5s;
+          overflow: hidden;
+
+          z-index: 999;
+      }
+
+      nav ul {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 50px;
+          padding: 0;
+      }
+
+      nav li:nth-child(1) {
+          margin-top: 100px;
+      }
+
+      nav a{
+          padding: 10px 100px;
+      }
+
+      label {
+          margin-left: auto;
+          width: 45px;
+          height:30px;
+          cursor: pointer;
+          position: relative;
+          z-index: 1000;
+      }
+
+      label div {
+          width: 100%;
+          height: 5px;
+          background: var(--current-primary);
+          position: absolute;
+          transform: translateY(-50%);
+          border-radius: 99px;
+          transition: 0.3s;
+          transform: scale(1);
+      }
+
+      label div:nth-child(1) {
+          top: 0;
+      }
+      label div:nth-child(2) {
+          top: 50%;
+      }
+      label div:nth-child(3) {
+          top: 100%;
+      }
+
+      input:checked + header nav {
+          height: 100vh;
+      }
+      input:checked + header label div:nth-child(1) {
+          transform: rotate(45deg);
+          top:50%;
+      }
+      input:checked + header label div:nth-child(3) {
+          transform: rotate(-45deg);
+          top:50%;
+      }
+      input:checked + header label div:nth-child(2) {
+          transform: scale(0);
+          opacity: 0;
+      }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    margin-bottom: 25px;
+  }
+
+  main h2 {
+    margin: 20px 0px;
+  }
+
+  /* Tracking Section */
+  .tracking-container {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  .stopwatch-section, .add-task {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .stopwatch-display {
+    text-align: center;
+    margin: 1.5rem 0;
+  }
+
+  #stopwatch-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--current-secondary);
+    margin-top: 1rem;
+  }
+
+  .stopwatch-controls {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .stopwatch-controls button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--current-secondary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: filter 0.2s;
+    font-size: 1rem;
+  }
+
+  .stopwatch-controls button:hover {
+    filter: brightness(0.85);
+    transition: filter 0.2s;
+  }
+
+  /* Task Form */
+  .add-task form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .add-task input, .add-task select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  .add-task button {
+    padding: 0.75rem;
+    background-color: var(--current-secondary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: filter 0.2s;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .add-task button:hover {
+    filter: brightness(0.85);
+    transition: filter 0.2s;
+  }
+
+  /* Task Lists */
+  .task-lists {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .task-list {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .task-instructions {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  #task-list {
+    padding-left: 40px;
+  }
+
+  #task-list li, #finished-task-list li {
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  #task-list li:hover {
+    background-color: #f0f0f0;
+  }
+
+  .active-task {
+    background-color: #ebebeb !important;
+    border-left: 4px solid #7e7e7e;
+  }
+
+  .time-spent {
+    font-style: italic;
+    color: #7e7e7e;
+    font-weight: 600;
+  }
+
+  /* Charts */
+  .charts-container {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .progress-section, .time-section {
+    flex: 1;
+    min-width: 300px;
+    height: auto;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .progress-section h2, .time-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  /* Add Legend Styling */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+  }
+
+  .class-color {
+    background-color: #826189; /* Purple for classes */
+  }
+
+  .club-color {
+    background-color: #ff82b6; /* Blue for clubs */
+  }
+
+  .chart-description {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .view-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .view-toggle button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .view-toggle button:first-child {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .view-toggle button:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+
+  .view-toggle button.active {
+    background-color: var(--current-secondary);
+    color: white;
+  }
+
+
+  @media (max-width: 460px) {
+    .tracking-container,
+    .task-lists,
+    .charts-container {
+      width: 200px;
+      justify-content: center;
+    }
+  }
+}

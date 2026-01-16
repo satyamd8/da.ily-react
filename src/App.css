@@ -1,0 +1,8 @@
+/* App.css or your global stylesheet */
+body,
+#root {
+   background-image: url("./assets/Dawn.svg");
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+}
