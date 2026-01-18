@@ -208,14 +208,14 @@ const PomodoroTimer = () => {
             <div className="buttons">
                <button onClick={reset}>
                   <img
-                     src="../../src/assets/replay.svg"
+                     src="../assets/replay.svg"
                      className="replay_button"
                   />
                </button>
 
                <button onClick={playPause}>
                   <img
-                     src="../../src/assets/play.svg"
+                     src="../assets/play.svg"
                      className="playpause_button"
                   />
                </button>
