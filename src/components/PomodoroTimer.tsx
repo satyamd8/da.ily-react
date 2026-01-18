@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import replayIcon from "../assets/replay.svg";
+import playIcon from "../assets/play.svg";
 import lamp from "../assets/lamp.mp3";
 
 const STAGES = ["study", "break", "long break"];
@@ -208,14 +210,14 @@ const PomodoroTimer = () => {
             <div className="buttons">
                <button onClick={reset}>
                   <img
-                     src="../assets/replay.svg"
+                     src={replayIcon}
                      className="replay_button"
                   />
                </button>
 
                <button onClick={playPause}>
                   <img
-                     src="../assets/play.svg"
+                     src={playIcon}
                      className="playpause_button"
                   />
                </button>
