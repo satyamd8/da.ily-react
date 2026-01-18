@@ -4,10 +4,14 @@ import NavbarHome from "../../components/NavbarHome";
 import SettingsModal from "../../components/SettingsModal";
 import "./home.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
    const [modalIsOpen, openModal] = useState(false);
+
+   useEffect(() => {
+      document.title = "da.ily"
+   }, []);
 
    window.addEventListener("click", (e) => {
       if (e.target === document.getElementById("settings")) {

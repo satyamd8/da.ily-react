@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import lamp from "../assets/lamp.mp3";
 
 const STAGES = ["study", "break", "long break"];
 
@@ -167,7 +168,7 @@ const PomodoroTimer = () => {
          <audio
             ref={timerEndRef}
             id="timer-end"
-            src="lamp.mp3"
+            src={lamp}
             preload="auto"
          />
 

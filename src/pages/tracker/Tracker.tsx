@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import Stopwatch from "../../components/Stopwatch";
 import AddTaskForm from "../../components/AddTaskForm";
@@ -18,7 +18,11 @@ const Tracker = () => {
    const [tasks, setTasks] = useState<Task[]>([]);
    const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
 
-   // ---------- TASK ACTIONS ----------
+   useEffect(() => {
+         document.title = "da.ily | Tracker"
+      }, []);
+
+   // task handling
 
    const addTask = (task: Task) => {
       setTasks((prev) => [...prev, task]);
@@ -35,7 +39,7 @@ const Tracker = () => {
       if (activeTaskId === id) setActiveTaskId(null);
    };
 
-   // ---------- STOPWATCH ACTION ----------
+   // stopwatch
 
    const handleStopwatchStop = (seconds: number) => {
       if (!activeTaskId || seconds === 0) return;
@@ -49,7 +53,7 @@ const Tracker = () => {
       );
    };
 
-   // ---------- DERIVED DATA ----------
+   // return
 
    const activeTasks = tasks.filter((t) => !t.completed);
    const finishedTasks = tasks.filter((t) => t.completed);
